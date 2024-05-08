@@ -7,13 +7,14 @@ public static class Config
     public static IEnumerable<IdentityResource> IdentityResources =>
         new IdentityResource[]
         { 
-            new IdentityResources.OpenId()
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile(),
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
             { 
-                 new ApiScope(name: "Frontierapi1", displayName: "My API") 
+                 new ApiScope(name: "Api1", displayName: "My API") 
             };
 
     public static IEnumerable<Client> Clients =>
@@ -33,7 +34,7 @@ public static class Config
             },
 
             // scopes that client has access to
-            AllowedScopes = { "Frontierapi1" }
+            AllowedScopes = { "Api1" }
         }
     };
 }
