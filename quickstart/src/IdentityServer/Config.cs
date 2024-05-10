@@ -57,6 +57,7 @@ public static class Config
             // where to redirect to after login
             RedirectUris = { "https://localhost:5002/signin-oidc" },
             
+             AllowOfflineAccess = true,
 
             // where to redirect to after logout
             PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },

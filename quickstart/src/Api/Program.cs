@@ -19,10 +19,6 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
 app.MapGet("/identity", (ClaimsPrincipal user) =>
 {
@@ -31,9 +27,22 @@ app.MapGet("/identity", (ClaimsPrincipal user) =>
     return clm;
 }).RequireAuthorization();
 
+app.MapGet("/weather", () =>
+{
+    var forecast =   GenerateForecast();
+    return forecast;
+}).RequireAuthorization();
+
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast =  GenerateForecast();
+    return forecast;
+});
+
+static WeatherForecast[] GenerateForecast()
+{
+    var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -42,8 +51,7 @@ app.MapGet("/weatherforecast", () =>
         ))
         .ToArray();
     return forecast;
-});
-
+}
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
