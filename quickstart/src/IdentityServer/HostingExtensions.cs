@@ -2,11 +2,11 @@
 // See LICENSE in the project root for license information.
 
 
-using Duende.IdentityServer;
+using Duende.IdentityServer.Configuration;
+using Duende.IdentityServer.Configuration.EntityFramework;
 using Duende.IdentityServer.EntityFramework.DbContexts;
 using Duende.IdentityServer.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 namespace IdentityServer;
@@ -53,7 +53,10 @@ internal static class HostingExtensions
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddRazorPages();
+      
 
+        builder.Services.AddIdentityServerConfiguration(opt => {})
+        .AddClientConfigurationStore();
         var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
         const string connectionString = @"Data Source=Duende.IdentityServer.Quickstart.EntityFramework.db";
 
@@ -123,6 +126,7 @@ internal static class HostingExtensions
         app.UseIdentityServer();
 
         app.UseAuthorization();
+        app.MapDynamicClientRegistration();
         app.MapRazorPages().RequireAuthorization();
 
         return app;

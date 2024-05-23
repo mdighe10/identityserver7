@@ -8,6 +8,12 @@
 
 	<ItemGroup>
 
+		<PackageReference Include="Duende.IdentityServer" Version="7.0.4" />
+
+		<PackageReference Include="Duende.IdentityServer.Configuration" Version="7.0.4" />
+
+		<PackageReference Include="Duende.IdentityServer.Configuration.EntityFramework" Version="7.0.4" />
+
 		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.0.4" />
 
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
