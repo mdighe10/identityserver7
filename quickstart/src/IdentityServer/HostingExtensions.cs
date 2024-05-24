@@ -53,11 +53,12 @@ internal static class HostingExtensions
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddRazorPages();
-      
-
+    
         builder.Services.AddIdentityServerConfiguration(opt => {})
         .AddClientConfigurationStore();
         var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
+        //print the assembly name
+        Log.Information("Migrations Assembly: {migrationsAssembly}", migrationsAssembly);
         const string connectionString = @"Data Source=Duende.IdentityServer.Quickstart.EntityFramework.db";
 
         builder.Services.AddIdentityServer()
@@ -126,9 +127,8 @@ internal static class HostingExtensions
         app.UseIdentityServer();
 
         app.UseAuthorization();
-        app.MapDynamicClientRegistration();
+      //  app.MapDynamicClientRegistration();
         app.MapRazorPages().RequireAuthorization();
-
         return app;
     }
 }

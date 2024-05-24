@@ -8,3 +8,5 @@ quickstart/src/WebClient/obj
 quickstart/src/WebApi/bin
 quickstart/src/WebApi/obj
 quickstart/src/WebApi/keys
+quickstart/src/Configuration/obj
+quickstart/src/Configuration/bin
