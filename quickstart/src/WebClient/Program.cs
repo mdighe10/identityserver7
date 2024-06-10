@@ -15,8 +15,10 @@ builder.Services.AddAuthentication(options =>
     {
         options.Authority = "https://localhost:5001";
 
-        options.ClientId = "web";
-        options.ClientSecret = "secret";
+        //options.ClientId = "web";
+        //options.ClientSecret = "secret";
+        //options.ClientId = "I1h0ohDPHMxTqaJ2l1JK9dXHYsnfYMUKPAZYb6tv_HY";
+        //options.ClientSecret = "L6Db6EIpALIUVBKWNXri56UBRXjyly0hDllfXmahRgc";
         options.ResponseType = "code";
 
         options.Scope.Clear();
@@ -24,7 +26,7 @@ builder.Services.AddAuthentication(options =>
         options.Scope.Add("profile");
         options.Scope.Add("verification");
         options.Scope.Add("Api1");
-        options.Scope.Add("offline_access");
+        //options.Scope.Add("offline_access");
         options.ClaimActions.MapJsonKey("email_verified", "email_verified");
         options.GetClaimsFromUserInfoEndpoint = true;
 

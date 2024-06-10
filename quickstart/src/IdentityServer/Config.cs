@@ -51,6 +51,8 @@ public static class Config
         {
             ClientId = "web",
             ClientSecrets = { new Secret("secret".Sha256()) },
+            //ClientId = "I1h0ohDPHMxTqaJ2l1JK9dXHYsnfYMUKPAZYb6tv_HY",
+            //ClientSecrets = { new Secret("L6Db6EIpALIUVBKWNXri56UBRXjyly0hDllfXmahRgc") },
 
             AllowedGrantTypes = GrantTypes.Code,
             
